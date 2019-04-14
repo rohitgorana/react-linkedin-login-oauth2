@@ -53,17 +53,10 @@ export class LinkedIn extends Component {
 
   render() {
     const { className, disabled, children } = this.props;
-    return (
-      <button
-        type="button"
-        onClick={this.handleConnectLinkedInClick}
-        className={className}
-        disabled={disabled}
-      >
-        {children}
-      </button>
-
-    );
+    return React.cloneElement(children, {
+      onClick: this.handleConnectLinkedInClick,
+      disabled: disabled
+    }, children.props.children);
   }
 }
 
